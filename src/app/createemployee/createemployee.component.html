@@ -53,6 +53,7 @@
         <input type="radio" name="gender" value="female"> Female<br> -->
         
       </div>
+      
       <div *ngIf="f.submitted && !Gender.valid" class="text-danger"> Gender required </div> 
     </div>
     <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !Department.valid }">
