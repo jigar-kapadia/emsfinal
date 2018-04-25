@@ -1,0 +1,46 @@
+<app-logout></app-logout>
+<br/>
+<br/>
+<div>
+ 
+  <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <!-- <th>Gender</th>
+      <th>Phone</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th> -->
+      <th>Department</th>
+      <!-- <th>Date Of Birth</th>
+      <th>Date Of Joining</th>
+      <th>IsActive</th>
+      <th>RoleType</th> -->
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td><a class="" [routerLink]="['/employee',employee.Id]">{{employee.Id}}</a></td>
+        <td>{{employee.FirstName}}</td>
+        <td>{{employee.LastName}}</td>
+        <td>{{employee.Email}}</td>
+        <!-- <td>{{employee.Gender}}</td>
+        <td>{{employee.Phone}}</td>
+        <td>{{employee.Country}}</td>
+        <td>{{employee.State}}</td>
+        <td>{{employee.City}}</td> -->
+        <td>{{employee.Department}}</td>
+        <!-- <td>{{employee.DateOfBirth | date}}</td>
+        <td>{{employee.DateOfJoining|date}}</td>
+        <td>{{employee.IsActive}}</td>
+        <td>{{employee.Role}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<a routerLink="/create"><button type="button" class="btn btn-outline-primary" [routerLink]="">CREATE</button></a>

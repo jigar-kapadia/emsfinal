@@ -1,0 +1,93 @@
+import {Injectable} from '@angular/core';
+// import {HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+//import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Employee } from '../models/employee';
+import {Country} from '../models/country';
+import {State} from '../models/state';
+import {City} from '../models/city';
+import {Department } from '../models/department';
+import {RoleMaster} from '../models/rolemaster';
+
+@Injectable()
+export class EmployeeService
+{
+    public token: string;
+    public employees : Employee[];
+    public employeeDetails : Employee;
+    constructor(private http : Http){
+        // set token if saved in local storage
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = currentUser && currentUser.token;
+    }
+
+    
+    GetEmployees() : Observable<Employee[]> {
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get users from api
+        return this.http.get('http://localhost:51743/api/employees', options)
+            .map((response: Response) => response.json());
+    }
+
+    GetEmployeeById(id : number) : Observable<Employee>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+
+        // get employee details from api
+        return this.http.get('http://localhost:51743/api/employee/'+id, options)
+            .map((response: Response) => response.json());
+    }
+
+    GetCountries() : Observable<Country[]>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get countries from api
+        return this.http.get('http://localhost:51743/api/employee/countries', options)
+            .map((response: Response) => response.json());
+    }
+
+    GetDepartments() : Observable<Department[]>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get countries from api
+        return this.http.get('http://localhost:51743/api/employee/departments', options)
+            .map((response: Response) => response.json());
+    }
+
+    GetRoles() : Observable<RoleMaster[]>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get countries from api
+        return this.http.get('http://localhost:51743/api/employee/roles', options)
+            .map((response: Response) => response.json());
+    }
+
+
+    GetStates(countryId : number) : Observable<State[]>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get countries from api
+        return this.http.get('http://localhost:51743/api/employee/states/'+countryId, options)
+            .map((response: Response) => response.json());
+    }
+
+    GetCities(stateId : number) : Observable<City[]>{
+        //add token to header
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        // get countries from api
+        return this.http.get('http://localhost:51743/api/employee/cities/'+stateId, options)
+            .map((response: Response) => response.json());
+    }
+
+}

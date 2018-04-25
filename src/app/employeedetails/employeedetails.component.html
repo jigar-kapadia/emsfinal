@@ -1,0 +1,100 @@
+<app-logout></app-logout>
+<br/>
+<br/>
+<br/>
+<div class="form-group row">
+  <label for="example-text-input" class="col-form-label">First Name</label>
+  <div class="col-4">
+    <input class="form-control" type="text" readonly value="{{employee.FirstName}}">
+    <!-- <label id="FirstName">{{employee.FirstName}}</label> -->
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-search-input" class="col-form-label">Last Name</label>
+  <div class="col-4">
+      <input class="form-control" type="text" readonly value="{{employee.LastName}}">
+    <!-- <label class="form-control" id="example-text-input">{{employee.LastName}}</label> -->
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-email-input" class="col-form-label">Email</label>
+  <div class="col-4">
+    <!-- <label class="form-control" id="example-email-input">{{employee.Email}}</label> -->
+    <input class="form-control" type="text" readonly value="{{employee.Email}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-url-input" class="col-form-label">Phone</label>
+  <div class="col-4">
+      <input class="form-control" type="text" readonly value="{{employee.Phone}}">
+    <!-- <label class="form-control" id="example-url-input">{{employee.Phone}}</label> -->
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-tel-input" class="col-form-label">Gender</label>
+  <div class="col-4">
+      <input class="form-control" type="text" readonly value="{{employee.Gender}}">
+    <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-password-input" class="col-form-label">Country</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="password" value="hunter2" id="example-password-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.Country}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-number-input" class="col-form-label">State</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="number" value="42" id="example-number-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.State}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-datetime-local-input" class="col-form-label">City</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.City}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-date-input" class="col-form-label">Department</label>
+  <div class="col-4">
+    <input class="form-control" type="text" readonly value="{{employee.Department}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-month-input" class="col-form-label">Date Of Birth</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="month" value="2011-08" id="example-month-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.DateOfBirth | date}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-week-input" class="col-form-label">Date Of Joining</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="week" value="2011-W33" id="example-week-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.DateOfJoining | date}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-time-input" class="col-form-label">Active</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="time" value="13:45:00" id="example-time-input"> -->
+    <label class="switch" readonly>
+      <input type="checkbox" checked="{{employee.IsActive}}" [value]="employee.IsActive ? Active : Inactive">
+      <span class="slider round"></span>
+    </label>  
+  </div>
+
+</div>
+
+<div class="form-group row">
+  <label for="example-time-input" class="col-form-label">Role</label>
+  <div class="col-4">
+    <!-- <input class="form-control" type="time" value="13:45:00" id="example-time-input"> -->
+    <input class="form-control" type="text" readonly value="{{employee.Role}}">
+  </div>
+
+</div>
