@@ -13,8 +13,11 @@ import {ModalComponent} from '../directives/modal.component';
   templateUrl: './employeedetails.component.html',
   styleUrls: ['./employeedetails.component.css']
 })
+
+
 export class EmployeedetailsComponent implements OnInit {
   public employee : Employee = null;
+  
   statusMessage: string ;
   constructor(private empService : EmployeeService, private _activatedRoute: ActivatedRoute,public dialog: MatDialog) { }
 
