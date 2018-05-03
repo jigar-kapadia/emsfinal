@@ -22,6 +22,8 @@ export class CreateemployeeComponent implements OnInit {
   cities : City[];
   departments : Department[];
   roles : RoleMaster[];
+  IsCountrySelected : boolean = false;
+  IsStateSelected : boolean = false;
   constructor(private router : Router,private employeeService : EmployeeService) {
     
    }
@@ -64,6 +66,8 @@ export class CreateemployeeComponent implements OnInit {
   }
 
   getCites(stateId) : void{
+    this.IsCountrySelected = true;
+    this.IsStateSelected = true;
     this.employeeService.GetCities(stateId)
     .subscribe(List=>{
       console.log(List)
@@ -71,7 +75,9 @@ export class CreateemployeeComponent implements OnInit {
     });
   }
 
+
   getStates(countryId) : void{
+    this.IsCountrySelected = true;
     this.employeeService.GetStates(countryId)
     .subscribe(List=>{
       console.log(List)

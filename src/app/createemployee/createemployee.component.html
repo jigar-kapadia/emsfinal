@@ -65,51 +65,53 @@
         
       </select>
       <div *ngIf="f.submitted && !Department.valid" class="text-danger"> Department required </div> 
-    </div>
-    
-    
+    </div>   
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-4" [ngClass]="{ 'text-danger': f.submitted && !Country.valid }">
       <label for="Country">Country</label>
-      <select id="Country" class="form-control" name="Country" [(ngModel)]="CountryId" #Country="ngModel">
+      <select id="Country" class="form-control" name="Country" [(ngModel)]="CountryId" #Country="ngModel" (change)="OnCountryChange($event.target.value)" required>
           <option value="-1">-Select-</option>
-        <option *ngFor="let country of countries" value="{{country.Id}}" (ngModelChange)="onCountryChange($event.value)">{{country.Name}}</option>
+        <option *ngFor="let country of countries" value="{{country.Id}}">{{country.Name}}</option>
       </select>
       <div *ngIf="f.submitted && !Country.valid" class="text-danger"> Country required </div> 
     </div>
+
     <div class="form-group col-md-4">
       <label for="State">State</label>
-      <select id="State" class="form-control" name="State" [(ngModel)]="StateId" #State="ngModel">
+      <select id="State" class="form-control" name="State" [(ngModel)]="StateId" #State="ngModel" (change)="getCites($event.target.value)">
         <option value="-1">-Select-</option>
         <option *ngFor="let state of states" value="{{state.Id}}">{{state.Name}}</option>
+
       </select>
     </div>
     <div class="form-group col-md-4">
       <label for="City">City</label>
       <select id="City" class="form-control" name="City" [(ngModel)]="CityId" #City="ngModel">
           <option value="-1">-Select-</option>
-          <option *ngFor="let state of cities" value="{{state.Id}}" >{{state.Name}}</option>
+          <option *ngFor="let state of cities" value="{{state.Id}}">{{state.Name}}</option>
       </select>
+      <!-- <div *ngIf="f.submitted && StateId != 0 && StateId != -1" class="text-danger"> City Required</div> -->
     </div>
   </div>
 
-  <div class="form-row">
+  <div class="form-row" [ngClass]="{ 'text-danger': f.submitted && !DateBirth.valid }">
     <div class="form-group col-md-4">
       <label for="DateOfBirth">Date Of Birth</label>
-      <input class="form-control" type="date" name="DateOfBirth" id="DateOfBirth" [(ngModel)]="DateOfBirth">
+      <input class="form-control" type="date" name="DateBirth" id="DateOfBirth" [(ngModel)]="DateOfBirth" #DateBirth="ngModel">
+      <div *ngIf="f.submitted && !DateBirth.valid" class="text-danger"> Date Of Birth required </div> 
     </div>
     
     <div class="form-group col-md-4">
       <label for="DateOfJoining">Date Of Joining</label>
-      <input class="form-control" type="date" name="DateOfJoining" id="DateOfJoining" [(ngModel)]="DateOfJoining">
+      <input class="form-control" type="date" name="DateJoining" id="DateOfJoining" [(ngModel)]="DateOfJoining" #DateJoining="ngModel" >
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-4" [ngClass]="{ 'text-danger': f.submitted && !Role.valid }">
       <label for="Role">Role</label>
-      <select id="Role" class="form-control" name="Role">
+      <select id="Role" class="form-control" name="Role" [(ngModel)]="RoleId" #Role="ngModel">
         <option value="-1">-Select-</option>
-        <option *ngFor="let role of roles" value="{{role.Id}}" [(ngModel)]="RoleId">{{role.Name}}</option>
+        <option *ngFor="let role of roles" value="{{role.Id}}" >{{role.Name}}</option>
       </select>
     </div>
   
