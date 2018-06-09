@@ -1,7 +1,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        
+        <navbar *ngIf="isLoggedIn"></navbar>
         <div>
             <router-outlet></router-outlet>
         </div>

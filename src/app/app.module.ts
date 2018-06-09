@@ -17,6 +17,10 @@ import { ModalComponent } from './directives//modal.component';
 import { EmployeedetailsComponent } from './employeedetails/employeedetails.component';
 //import {ModalComponent} from '../app/directives/modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CreatenewComponent } from './components/createnew/createnew.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ListemployeesComponent } from './components/listemployees/listemployees.component';
+import {DataTableModule} from 'angular5-data-table';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,18 @@ import {MatDialogModule} from '@angular/material/dialog';
     LogoutComponent,
     CreateemployeeComponent,
     ModalComponent,
-    EmployeedetailsComponent
+    EmployeedetailsComponent,
+    CreatenewComponent,
+    NavbarComponent,
+    ListemployeesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     routing,
-    MatDialogModule
+    MatDialogModule,
+    DataTableModule.forRoot()
   ],
   providers: [LoginService,EmployeeService,AuthGuard],
   bootstrap: [AppComponent],

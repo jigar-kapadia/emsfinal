@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
     .subscribe(result => {
       if (result === true) {
           //this.error = 'Success';
-          this.router.navigate(["/employee"]);
+          // this.router.navigate(["/employee"]);
+          this.router.navigate(["/list"]);
       } else {
           this.error = 'Username or password is incorrect';
           //this.loading = false;
