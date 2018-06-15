@@ -21,6 +21,8 @@ import { CreatenewComponent } from './components/createnew/createnew.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListemployeesComponent } from './components/listemployees/listemployees.component';
 import {DataTableModule} from 'angular5-data-table';
+import {ModalDialogModule} from 'ngx-modal-dialog';
+import { EmployeedialogComponent } from './components/employeedialog/employeedialog.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import {DataTableModule} from 'angular5-data-table';
     EmployeedetailsComponent,
     CreatenewComponent,
     NavbarComponent,
-    ListemployeesComponent
+    ListemployeesComponent,
+    EmployeedialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,12 +45,13 @@ import {DataTableModule} from 'angular5-data-table';
     HttpModule,
     routing,
     MatDialogModule,
-    DataTableModule.forRoot()
+    DataTableModule.forRoot(),
+    ModalDialogModule.forRoot()
   ],
   providers: [LoginService,EmployeeService,AuthGuard],
   bootstrap: [AppComponent],
   entryComponents:[
-    ModalComponent
+    EmployeedialogComponent
   ]
 })
 export class AppModule { }

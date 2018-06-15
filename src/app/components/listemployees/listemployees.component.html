@@ -1,6 +1,19 @@
-<data-table [title]="Employees" [items]="items" [itemCount]="itemCount" [indexColumn]="false" [pagination]="true">
-    <data-table-column [property]="'Id'" [header]="'Employee Id'"></data-table-column>
+<data-table [title]="Employees" [items]="items" [itemCount]="itemCount" [indexColumn]="false" [pagination]="true"
+ [expandableRows]="true" [limit]=10>
+    <data-table-column [property]="'Id'" [header]="'Employee Id'">
+        <!-- <ng-template #dataTableCell let-item="item">
+            <a [routerLink]="" (click)="getEmployyesList($event)">{{item.Id}}</a>
+            
+        </ng-template> -->
+    </data-table-column>
   <data-table-column [property]="'FirstName'" [header]="'First Name'"></data-table-column>
   <data-table-column [property]="'LastName'" [header]="'Last Name'"></data-table-column>
   <data-table-column [property]="'Email'" [header]="'Email'"></data-table-column>
+  <data-table-column [header]="'Actions'">
+    <ng-template #dataTableCell let-item="item">
+      <input type="button" class="btn btn-primary btn-sm" value="Details" (click)="getEmployyesList($event,item.Id)">
+      <input type="button" class="btn btn-primary btn-sm" value="Edit">
+      <input type="button" class="btn btn-primary btn-sm" value="Delete">
+    </ng-template>
+  </data-table-column>
 </data-table>

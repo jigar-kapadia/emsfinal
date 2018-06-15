@@ -1,0 +1,79 @@
+<!-- <div class="row">
+    <div class="col">
+      Employee Id : <span>{{employee.Id}}</span>
+    </div>
+    <div class="col">
+      Employee Name : <span>{{employee.FirstName}} + {{employee.LastName}}</span>
+    </div>
+    <div class="col">
+      
+    </div>
+    <div class="col">col</div>
+  </div> -->
+
+  <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Personal Details
+            </button>
+          </h5>
+        </div>
+    
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <span>Name : {{employee.FirstName}}&nbsp;{{ employee.LastName}}</span>
+            <br/>
+            <span>Date of Birth : {{employee.DateOfBirth | date}}</span>
+            <br/>
+            <span>Gender : {{employee.Gender}}</span>
+            <br/>
+            <span>Location : {{employee.City}},{{employee.State}},{{employee.Country}}</span>
+            <br/>
+            <!-- <span>State : {{employee.State}}</span>
+            <br/>
+            <span>City : {{employee.City}}</span> -->
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Contact Details
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            
+              <span>Email : {{employee.Email}}</span>
+              <br/>
+              <span>Contact : {{employee.Phone}}</span>
+              <br/>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Official Details
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+              <span>Date of Joining : {{employee.DateOfJoining | date}}&nbsp;&nbsp;</span>
+              <br>
+              <span>Department : {{employee.Department}}</span>
+              <br/>
+              <span>Role : {{employee.Role}}</span>
+              <br/>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- {{employee | json}} -->

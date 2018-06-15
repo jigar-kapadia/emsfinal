@@ -90,4 +90,12 @@ export class EmployeeService
             .map((response: Response) => response.json());
     }
 
+    UpdateEmployee(id : number, emp :Employee ) : Observable<boolean>{
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+        let options = new RequestOptions({ headers: headers });
+        
+        return this.http.post('http://localhost:51743/api/employee/update/'+id, options)
+            .map((response: Response) => response.json());
+    }
+
 }
