@@ -18,6 +18,7 @@ export class EmployeeService
     public token: string;
     public employees : Employee[];
     public employeeDetails : Employee;
+    public url :string = 'http://jigarkapadia-001-site1.gtempurl.com/api/';
     constructor(private http : Http){
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -30,7 +31,8 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
         // get users from api
-        return this.http.get('http://localhost:51743/api/employees', options)
+        //return this.http.get('http://localhost:51743/api/employees', options)
+        return this.http.get(this.url + 'employees', options)
             .map((response: Response) => response.json());
     }
 
@@ -40,7 +42,8 @@ export class EmployeeService
         let options = new RequestOptions({ headers: headers });
 
         // get employee details from api
-        return this.http.get('http://localhost:51743/api/employee/'+id, options)
+        //return this.http.get('http://localhost:51743/api/employee/'+id, options)
+        return this.http.get(this.url + 'employee/'+id, options)
             .map((response: Response) => response.json());
     }
 
@@ -49,7 +52,8 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
         // get countries from api
-        return this.http.get('http://localhost:51743/api/employee/countries', options)
+        //return this.http.get('http://localhost:51743/api/employee/countries', options)
+        return this.http.get(this.url + 'countries', options)
             .map((response: Response) => response.json());
     }
 
@@ -58,7 +62,8 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
         // get countries from api
-        return this.http.get('http://localhost:51743/api/employee/departments', options)
+        //return this.http.get('http://localhost:51743/api/employee/departments', options)
+        return this.http.get(this.url+'employee/departments', options)
             .map((response: Response) => response.json());
     }
 
@@ -67,7 +72,8 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
         // get countries from api
-        return this.http.get('http://localhost:51743/api/employee/roles', options)
+        //return this.http.get('http://localhost:51743/api/employee/roles', options)
+        return this.http.get(this.url+'employee/roles', options)
             .map((response: Response) => response.json());
     }
 
@@ -77,7 +83,8 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
         // get countries from api
-        return this.http.get('http://localhost:51743/api/employee/states/'+countryId, options)
+        //return this.http.get('http://localhost:51743/api/employee/states/'+countryId, options)
+        return this.http.get(this.url+'employee/states/'+countryId, options)
             .map((response: Response) => response.json());
     }
 
@@ -93,8 +100,8 @@ export class EmployeeService
     UpdateEmployee(id : number, emp :Employee ) : Observable<boolean>{
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({ headers: headers });
-        
-        return this.http.post('http://localhost:51743/api/employee/update/'+id, options)
+        //return this.http.post('http://localhost:51743/api/employee/update/'+id, options)
+        return this.http.post(this.url + 'employee/update/'+id, options)
             .map((response: Response) => response.json());
     }
 

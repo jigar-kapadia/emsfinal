@@ -15,7 +15,7 @@ export class LoginService
     public token: string;
 
     userChange$ = new BehaviorSubject({ischange : false})
-
+    public url :string = 'http://jigarkapadia-001-site1.gtempurl.com/api/';
     constructor(private http : Http){
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -23,7 +23,8 @@ export class LoginService
     }
 
     login(loginModel : Login) : Observable<boolean>{
-        return this.http.post('http://localhost:51743/api/login/AuthenticateUser',loginModel)
+        //return this.http.post('http://localhost:51743/api/login/AuthenticateUser',loginModel)
+        return this.http.post(this.url+'login/AuthenticateUser',loginModel)
         .map((reposone : Response)=>{
             // login successful if there's a jwt token in the response
             let token = reposone.json();//&& reposone.json().token;
