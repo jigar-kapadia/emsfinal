@@ -20,7 +20,7 @@ export class ModalComponent {
   // // constructor(
   //   // public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
   //   // @Inject(MAT_DIALOG_DATA) public data: any) { }
-
+  bodyText : string ='';
   constructor(public dialog: MatDialog,public dialogRef: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
     //  openDialog(id): void {
