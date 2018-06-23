@@ -1,0 +1,136 @@
+<!-- <app-logout></app-logout>
+<br/>
+<br/>
+<br/>
+
+<form name="form" (ngSubmit)="f.form.valid && CreateEMployee(model)" #f="ngForm" novalidate>
+  <div class="form-row">
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !FirstName.valid }">
+      <label for="FirstName">First Name</label>
+      <input type="text" class="form-control" name="FirstName" placeholder="First Name" 
+      [(ngModel)]="model.FirstName" #FirstName="ngModel" required>
+      <div *ngIf="f.submitted && !FirstName.valid" class="text-danger">First Name is required</div>
+    </div>
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !LastName.valid }">
+      <label for="LastName">Last Name</label>
+      <input type="text" class="form-control" name="LastName" placeholder="Last Name"
+       #LastName="ngModel" [(ngModel)]="model.LastName" required>
+      <div *ngIf="f.submitted && !LastName.valid" class="text-danger">Last Name is required</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !Email.valid }">
+      <label for="Email">Email</label>
+      <input type="email" class="form-control" name="Email" placeholder="Email" #Email="ngModel" 
+      [(ngModel)]="model.Email" email>
+      <div *ngIf="f.submitted && !Email.valid" class="text-danger">Please Enter valid Email Id</div>
+      <!-- <div *ngIf="f.submitted && Email.errors.pattern">Email is invalid</div> -->
+    </div>
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !Phone.valid }">
+      <label for="Phone">Phone</label>
+      <input type="text" class="form-control" id="Phone" placeholder="Phone" name="Phone" [(ngModel)]="model.Phone" #Phone="ngModel" required>
+      <div *ngIf="f.submitted && !Phone.valid" class="text-danger">Phone Required</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !Gender.valid }">
+      <label for="Gender">Gender</label>
+      <input type="text" class="form-control" id="FirstName" placeholder="FirstName"> 
+      <div class="form-check">
+      <label class="radio"><input type="radio" name="male">Male</label>
+      <label class="radio"><input type="radio" name="female">Female</label>
+      </div>
+      <mat-radio-group>
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+      </mat-radio-group>
+      <div class="form-control">
+        <label class="radio-inline"><input type="radio" name="Gender" value='Male' [(ngModel)]="model.Gender" #Gender="ngModel" required>Male</label>
+        <label class="radio-inline"><input type="radio" name="Gender" value='Female' [(ngModel)]="model.Gender" #Gender="ngModel" required>Female</label>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        
+      </div>
+
+      <div *ngIf="f.submitted && !Gender.valid" class="text-danger"> Gender required </div> 
+    </div>
+    <div class="form-group col-md-6" [ngClass]="{ 'text-danger': f.submitted && !Department.valid }">
+      <label for="Department">Department</label>
+     <input type="text" class="form-control"  id="LastName" placeholder="LastName"> 
+      <select id="Department" [(ngModel)]="Department" class="form-control" name="Department" #Department="ngModel" required>
+          <option value="-1">-Select-</option>
+        <option *ngFor="let department of departments" value="{{department.Id}}" >{{department.Name}}</option>
+        
+      </select>
+      <div *ngIf="f.submitted && !Department.valid" class="text-danger"> Department required </div> 
+    </div>   
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4" [ngClass]="{ 'text-danger': f.submitted && !Country.valid }">
+      <label for="Country">Country</label>
+      <select id="Country" class="form-control" name="Country" [(ngModel)]="CountryId" #Country="ngModel" (change)="OnCountryChange($event.target.value)" required>
+          <option value="-1">-Select-</option>
+        <option *ngFor="let country of countries" value="{{country.Id}}">{{country.Name}}</option>
+      </select>
+      <div *ngIf="f.submitted && !Country.valid" class="text-danger"> Country required </div> 
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="State">State</label>
+      <select id="State" class="form-control" name="State" [(ngModel)]="StateId" #State="ngModel" (change)="getCites($event.target.value)">
+        <option value="-1">-Select-</option>
+        <option *ngFor="let state of states" value="{{state.Id}}">{{state.Name}}</option>
+
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="City">City</label>
+      <select id="City" class="form-control" name="City" [(ngModel)]="CityId" #City="ngModel">
+          <option value="-1">-Select-</option>
+          <option *ngFor="let state of cities" value="{{state.Id}}">{{state.Name}}</option>
+      </select>
+      <!-- <div *ngIf="f.submitted && StateId != 0 && StateId != -1" class="text-danger"> City Required</div> -->
+    </div>
+  </div>
+
+  <div class="form-row" [ngClass]="{ 'text-danger': f.submitted && !DateBirth.valid }">
+    <div class="form-group col-md-4">
+      <label for="DateOfBirth">Date Of Birth</label>
+      <input class="form-control" type="date" name="DateBirth" id="DateOfBirth" [(ngModel)]="DateOfBirth" #DateBirth="ngModel">
+      <div *ngIf="f.submitted && !DateBirth.valid" class="text-danger"> Date Of Birth required </div> 
+    </div>
+    
+    <div class="form-group col-md-4">
+      <label for="DateOfJoining">Date Of Joining</label>
+      <input class="form-control" type="date" name="DateJoining" id="DateOfJoining" [(ngModel)]="DateOfJoining" #DateJoining="ngModel" >
+    </div>
+    <div class="form-group col-md-4" [ngClass]="{ 'text-danger': f.submitted && !Role.valid }">
+      <label for="Role">Role</label>
+      <select id="Role" class="form-control" name="Role" [(ngModel)]="RoleId" #Role="ngModel">
+        <option value="-1">-Select-</option>
+        <option *ngFor="let role of roles" value="{{role.Id}}" >{{role.Name}}</option>
+      </select>
+    </div>
+  
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="IsActive">Active</label>
+      <label class="switch">
+        <input type="checkbox" checked="checked" [(ngModel)]="IsActive" name="IsActive">
+        <span class="slider round"></span>
+      </label>  
+    </div>
+    <div class="form-group col-md-4">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    <div class="form-group col-md-4"></div>
+
+  </div>
+</form>
+
+ -->
