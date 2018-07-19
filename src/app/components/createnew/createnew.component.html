@@ -52,19 +52,15 @@
 	<div class="form-row">
 		<div class="form-group col-md-6">
 		  <label>Country</label>
-		  <select id="inputCountry" class="form-control">
-		    <option> Choose...</option>
-		      <option>Uzbekistan</option>
-		      <option>Russia</option>
-		      <option selected="">United States</option>
-		      <option>India</option>
-		      <option>Afganistan</option>
+		  <select class="form-control" formControlName="Country">
+				<option> Choose...</option>
+				<option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
 			</select>
 			
 		</div> <!-- form-group end.// -->
 		<div class="form-group col-md-6">
 		  <label>State</label>
-		  <select id="inputState" class="form-control">
+		  <select class="form-control">
 		    <option> Choose...</option>
 		      <option>Uzbekistan</option>
 		      <option>Russia</option>
@@ -78,7 +74,7 @@
 	<div class="form-row">
 		<div class="form-group col-md-6">
 		  <label>City</label>
-		  <select id="inputCity" class="form-control">
+		  <select class="form-control">
 		    <option> Choose...</option>
 		      <option>Uzbekistan</option>
 		      <option>Russia</option>
@@ -90,7 +86,7 @@
 		</div> <!-- form-group end.// -->
 		<div class="form-group col-md-6">
 		  <label>Department</label>
-		  <select id="inputState" class="form-control">
+		  <select class="form-control">
 		    <option> Choose...</option>
 		      <option>Uzbekistan</option>
 		      <option>Russia</option>

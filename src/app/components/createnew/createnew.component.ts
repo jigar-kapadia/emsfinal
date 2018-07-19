@@ -31,7 +31,7 @@ export class CreatenewComponent implements OnInit {
 
   ngOnInit() {
     this.model = new Employee();
-    // this.getCountries();
+    this.getCountries();
     // this.getDepartments();
     // this.getRoles();
     this.createform();
@@ -48,7 +48,11 @@ export class CreatenewComponent implements OnInit {
       FirstName : new FormControl('',Validators.required),
       LastName : new FormControl('',Validators.required),
       Email : new FormControl('',[Validators.required,Validators.email]),
-      Gender : new FormControl('',Validators.required)
+      Gender : new FormControl('',Validators.required),
+      Country : new FormControl('',Validators.required),
+      State : new FormControl('',Validators.required),
+      City : new FormControl('',Validators.required),
+      Department : new FormControl('',Validators.required)
     })
   }
 
