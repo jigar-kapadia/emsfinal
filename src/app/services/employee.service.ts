@@ -18,7 +18,7 @@ export class EmployeeService
     public token: string;
     public employees : Employee[];
     public employeeDetails : Employee;
-    public url :string = 'http://jigarkapadia-001-site1.gtempurl.com/api/';
+    public url :string = 'http://localhost:51743/api/';
     constructor(private http : Http){
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));

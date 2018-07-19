@@ -15,7 +15,7 @@ export class LoginService
     public token: string;
 
     userChange$ = new BehaviorSubject({ischange : false})
-    public url :string = 'http://jigarkapadia-001-site1.gtempurl.com/api/';
+    public url :string = 'http://localhost:51743/api/';//'http://jigarkapadia-001-site1.gtempurl.com/api/';
     constructor(private http : Http){
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));

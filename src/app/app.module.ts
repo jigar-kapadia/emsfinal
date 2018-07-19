@@ -22,7 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListemployeesComponent } from './components/listemployees/listemployees.component';
 import {DataTableModule} from 'angular5-data-table';
 import {ModalDialogModule} from 'ngx-modal-dialog';
-import { EmployeedialogComponent } from './components/employeedialog/employeedialog.component'
+import { EmployeedialogComponent } from './components/employeedialog/employeedialog.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EmployeedialogComponent } from './components/employeedialog/employeedia
     routing,
     MatDialogModule,
     DataTableModule.forRoot(),
-    ModalDialogModule.forRoot()
+    ModalDialogModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [LoginService,EmployeeService,AuthGuard],
   bootstrap: [AppComponent],

@@ -1,3 +1,119 @@
-<p>
-  createnew works!
-</p>
+
+
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<h4 class="card-title mt-2">Sign up</h4>
+</header>
+<article class="card-body">
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateEmployee($event)">
+	<div class="form-row">
+		<div class="col form-group">
+			<label for="FirstName">First name </label>   
+      <input type="text" class="form-control" placeholder="" formControlName="FirstName">
+      <div class="alert alert-danger" *ngIf="employeeForm.get('FirstName').touched && employeeForm.get('FirstName').invalid">
+          <div *ngIf="employeeForm.get('FirstName').hasError('required')">Required!</div>
+        </div>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label for="LastName">Last name</label>
+				<input type="text" class="form-control" placeholder="" formControlName="LastName">
+				<div class="alert alert-danger" *ngIf="employeeForm.get('LastName').touched && employeeForm.get('LastName').invalid">
+          <div *ngIf="employeeForm.get('LastName').hasError('required')">Required!</div>
+        </div>
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row end.// -->
+	<div class="form-group">
+		<label for="Email">Email address</label>
+		<input type="email" class="form-control" placeholder="" formControlName="Email">
+		<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+		<div class="alert alert-danger" *ngIf="employeeForm.get('Email').touched && employeeForm.get('Email').invalid">
+			<div *ngIf="employeeForm.get('Email').hasError('required')">Required!</div>
+			<div *ngIf="employeeForm.get('Email').hasError('email') && !employeeForm.get('Email').hasError('required')">Please Enter Valid Email</div>
+		</div>
+	</div> <!-- form-group end.// -->
+	<div class="form-group">
+			<label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" formControlName="Gender" value="Male">
+		  <span class="form-check-label"> Male </span>
+		</label>
+		<label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" formControlName="Gender" value="Female">
+		  <span class="form-check-label"> Female</span>
+		</label>
+	
+		<div class="alert alert-danger" *ngIf="employeeForm.get('Gender').touched && employeeForm.get('Gender').invalid">
+			<div *ngIf="employeeForm.get('Gender').hasError('required')">Required!</div>
+		</div>
+	</div> <!-- form-group end.// -->
+	<div class="form-row">
+		<div class="form-group col-md-6">
+		  <label>Country</label>
+		  <select id="inputCountry" class="form-control">
+		    <option> Choose...</option>
+		      <option>Uzbekistan</option>
+		      <option>Russia</option>
+		      <option selected="">United States</option>
+		      <option>India</option>
+		      <option>Afganistan</option>
+			</select>
+			
+		</div> <!-- form-group end.// -->
+		<div class="form-group col-md-6">
+		  <label>State</label>
+		  <select id="inputState" class="form-control">
+		    <option> Choose...</option>
+		      <option>Uzbekistan</option>
+		      <option>Russia</option>
+		      <option selected="">United States</option>
+		      <option>India</option>
+		      <option>Afganistan</option>
+		  </select>
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row.// -->
+
+	<div class="form-row">
+		<div class="form-group col-md-6">
+		  <label>City</label>
+		  <select id="inputCity" class="form-control">
+		    <option> Choose...</option>
+		      <option>Uzbekistan</option>
+		      <option>Russia</option>
+		      <option selected="">United States</option>
+		      <option>India</option>
+		      <option>Afganistan</option>
+			</select>
+			
+		</div> <!-- form-group end.// -->
+		<div class="form-group col-md-6">
+		  <label>Department</label>
+		  <select id="inputState" class="form-control">
+		    <option> Choose...</option>
+		      <option>Uzbekistan</option>
+		      <option>Russia</option>
+		      <option selected="">United States</option>
+		      <option>India</option>
+		      <option>Afganistan</option>
+		  </select>
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row.// -->
+
+
+	<div class="form-group">
+		<label>Create password</label>
+	    <input class="form-control" type="password">
+	</div> <!-- form-group end.// -->  
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="employeeForm.invalid"> Register  </button>
+    </div> <!-- form-group// -->      
+    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
+</form>
+</article> <!-- card-body end .// -->
+<div class="border-top card-body text-center">Have an account? <a href="">Log In</a></div>
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+
+</div> <!-- row.//-->
