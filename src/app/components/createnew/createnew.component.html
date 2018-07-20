@@ -52,21 +52,17 @@
 	<div class="form-row">
 		<div class="form-group col-md-6">
 		  <label>Country</label>
-		  <select class="form-control" formControlName="Country">
+		  <select class="form-control" formControlName="Country" (change)="OnCountryChange($event.target.value)">
 				<option> Choose...</option>
-				<option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+				<option *ngFor="let country of countries" value="{{country.Id}}">{{country.Name}}</option>
 			</select>
 			
 		</div> <!-- form-group end.// -->
 		<div class="form-group col-md-6">
 		  <label>State</label>
-		  <select class="form-control">
+		  <select class="form-control" (change)="onStateChange($event.target.value)">
 		    <option> Choose...</option>
-		      <option>Uzbekistan</option>
-		      <option>Russia</option>
-		      <option selected="">United States</option>
-		      <option>India</option>
-		      <option>Afganistan</option>
+				<option *ngFor="let country of states" value="{{country.Id}}">{{country.Name}}</option>
 		  </select>
 		</div> <!-- form-group end.// -->
 	</div> <!-- form-row.// -->
@@ -76,11 +72,7 @@
 		  <label>City</label>
 		  <select class="form-control">
 		    <option> Choose...</option>
-		      <option>Uzbekistan</option>
-		      <option>Russia</option>
-		      <option selected="">United States</option>
-		      <option>India</option>
-		      <option>Afganistan</option>
+				<option *ngFor="let country of cities" value="{{country.Id}}">{{country.Name}}</option>
 			</select>
 			
 		</div> <!-- form-group end.// -->
@@ -88,11 +80,7 @@
 		  <label>Department</label>
 		  <select class="form-control">
 		    <option> Choose...</option>
-		      <option>Uzbekistan</option>
-		      <option>Russia</option>
-		      <option selected="">United States</option>
-		      <option>India</option>
-		      <option>Afganistan</option>
+		    <option *ngFor="let country of departments" value="{{country.Id}}">{{country.Name}}</option>
 		  </select>
 		</div> <!-- form-group end.// -->
 	</div> <!-- form-row.// -->

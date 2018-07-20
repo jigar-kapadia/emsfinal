@@ -31,10 +31,11 @@ export class CreatenewComponent implements OnInit {
 
   ngOnInit() {
     this.model = new Employee();
-    this.getCountries();
-    // this.getDepartments();
-    // this.getRoles();
     this.createform();
+    this.getCountries();
+    this.getDepartments();
+    this.getRoles();
+    
   }
 
   createform(){
@@ -80,6 +81,7 @@ export class CreatenewComponent implements OnInit {
 
   OnCountryChange(countryId) : void
   {
+    alert(countryId)
     this.getStates(countryId);
   }
 

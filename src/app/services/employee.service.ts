@@ -53,7 +53,7 @@ export class EmployeeService
         let options = new RequestOptions({ headers: headers });
         // get countries from api
         //return this.http.get('http://localhost:51743/api/employee/countries', options)
-        return this.http.get(this.url + 'countries', options)
+        return this.http.get(this.url + 'employee/countries', options)
             .map((response: Response) => response.json());
     }
 
