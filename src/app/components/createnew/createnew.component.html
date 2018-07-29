@@ -35,7 +35,22 @@
 			<div *ngIf="employeeForm.get('Email').hasError('email') && !employeeForm.get('Email').hasError('required')">Please Enter Valid Email</div>
 		</div>
 	</div> <!-- form-group end.// -->
+
 	<div class="form-group">
+		<label for="Contact">Contact</label>
+		<input type="text" class="form-control" placeholder="" formControlName="Contact">
+		<small class="form-text text-muted">We'll never share your contact with anyone else.</small>
+		<div class="alert alert-danger" *ngIf="employeeForm.get('Contact').touched && employeeForm.get('Contact').invalid">
+			
+			<div *ngIf="employeeForm.get('Contact').hasError('minlength')">Min 10 Digits contact required</div>
+			<div *ngIf="employeeForm.get('Contact').hasError('maxlength')">Max 10 Digits contact required</div>
+			<div *ngIf="employeeForm.get('Contact').hasError('required')">Required!</div>
+		</div>
+	</div> <!-- form-group end.// -->
+
+	<div class="form-group">
+			<label for="Gender">Gender</label>
+			<br>
 			<label class="form-check form-check-inline">
 		  <input class="form-check-input" type="radio" formControlName="Gender" value="Male">
 		  <span class="form-check-label"> Male </span>
@@ -56,36 +71,67 @@
 				<option> Choose...</option>
 				<option *ngFor="let country of countries" value="{{country.Id}}">{{country.Name}}</option>
 			</select>
-			
+			<div class="alert alert-danger" *ngIf="employeeForm.get('Country').touched && employeeForm.get('Country').invalid">
+					<div *ngIf="employeeForm.get('Country').hasError('required')">Required!</div>
+				</div>
 		</div> <!-- form-group end.// -->
 		<div class="form-group col-md-6">
 		  <label>State</label>
-		  <select class="form-control" (change)="onStateChange($event.target.value)">
+		  <select class="form-control" formControlName="State" (change)="onStateChange($event.target.value)">
 		    <option> Choose...</option>
 				<option *ngFor="let country of states" value="{{country.Id}}">{{country.Name}}</option>
-		  </select>
+			</select>
+			<div class="alert alert-danger" *ngIf="employeeForm.get('State').touched && employeeForm.get('State').invalid">
+					<div *ngIf="employeeForm.get('State').hasError('required')">Required!</div>
+				</div>
 		</div> <!-- form-group end.// -->
 	</div> <!-- form-row.// -->
 
 	<div class="form-row">
 		<div class="form-group col-md-6">
 		  <label>City</label>
-		  <select class="form-control">
+		  <select class="form-control" formControlName="City">
 		    <option> Choose...</option>
 				<option *ngFor="let country of cities" value="{{country.Id}}">{{country.Name}}</option>
 			</select>
-			
+			<div class="alert alert-danger" *ngIf="employeeForm.get('City').touched && employeeForm.get('City').invalid">
+					<div *ngIf="employeeForm.get('City').hasError('required')">Required!</div>
+				</div>
 		</div> <!-- form-group end.// -->
 		<div class="form-group col-md-6">
 		  <label>Department</label>
-		  <select class="form-control">
+		  <select class="form-control" formControlName="Department">
 		    <option> Choose...</option>
 		    <option *ngFor="let country of departments" value="{{country.Id}}">{{country.Name}}</option>
-		  </select>
+			</select>
+			<div class="alert alert-danger" *ngIf="employeeForm.get('Department').touched && employeeForm.get('Department').invalid">
+					<div *ngIf="employeeForm.get('Department').hasError('required')">Required!</div>
+				</div>
 		</div> <!-- form-group end.// -->
 	</div> <!-- form-row.// -->
 
-
+	<div class="form-row">
+			<div class="form-group col-sm-6">
+					<label>Date Of Birth</label>
+					<input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="DateOfBirth">
+  					<mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+				
+					<div class="alert alert-danger" *ngIf="employeeForm.get('DateOfBirth').touched && employeeForm.get('DateOfBirth').invalid">
+							<div *ngIf="employeeForm.get('DateOfBirth').hasError('required')">Required!</div>
+						</div>
+				</div> <!-- form-group end.// -->
+				<div class="form-group col-sm-6">
+						<label>Date Of Joining</label>
+						<input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="DateOfJoining">
+  					<mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
+						<mat-datepicker #picker1></mat-datepicker>
+						<div class="alert alert-danger" *ngIf="employeeForm.get('DateOfJoining').touched && employeeForm.get('DateOfJoining').invalid">
+								<div *ngIf="employeeForm.get('DateOfJoining').hasError('required')">Required!</div>
+							</div>
+					</div> <!-- form-group end.// -->
+	
+		</div> <!-- form-row.// -->
 	<div class="form-group">
 		<label>Create password</label>
 	    <input class="form-control" type="password">

@@ -9,6 +9,9 @@ import {Router} from '@angular/router';
 //import { stat } from 'fs';
 import {Employee} from '../../models/employee';
 import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
+import {ContactValidatorDirective} from '../../directives/contact-validator.directive';
+import {MatDatepickerModule} from '@angular/material';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-createnew',
@@ -49,12 +52,15 @@ export class CreatenewComponent implements OnInit {
       FirstName : new FormControl('',Validators.required),
       LastName : new FormControl('',Validators.required),
       Email : new FormControl('',[Validators.required,Validators.email]),
+      Contact : new FormControl('',[Validators.required,Validators.minLength(9),Validators.maxLength(9)]),
       Gender : new FormControl('',Validators.required),
       Country : new FormControl('',Validators.required),
       State : new FormControl('',Validators.required),
       City : new FormControl('',Validators.required),
-      Department : new FormControl('',Validators.required)
-    })
+      Department : new FormControl('',Validators.required),
+      DateOfJoining : new FormControl('',Validators.required),
+      DateOfBirth : new FormControl('',Validators.required)
+    });
   }
 
   CreateEmployee(event) : void{

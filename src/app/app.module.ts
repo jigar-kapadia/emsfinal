@@ -24,6 +24,9 @@ import {DataTableModule} from 'angular5-data-table';
 import {ModalDialogModule} from 'ngx-modal-dialog';
 import { EmployeedialogComponent } from './components/employeedialog/employeedialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ContactValidatorDirective } from './directives/contact-validator.directive';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { MatDatepickerModule,MatInputModule,MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     CreatenewComponent,
     NavbarComponent,
     ListemployeesComponent,
-    EmployeedialogComponent
+    EmployeedialogComponent,
+    ContactValidatorDirective,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatDialogModule,
     DataTableModule.forRoot(),
     ModalDialogModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [LoginService,EmployeeService,AuthGuard],
   bootstrap: [AppComponent],
