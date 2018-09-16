@@ -6,19 +6,21 @@ export class Employee
     Email : string;
     Gender : string;
     Phone : number;
-    Country : string;
+    Country : any;
     CountryId : number;
-    State : string;
+    State : any;
     StateId : number;
-    City:string;
+    City:any;
     CityId : number;
-    Department : string;
+    Department : any;
     DepartmentId : number;
     DateOfBirth : Date;
     DateOfJoining : Date;
     IsActive : boolean;
-    Role : string;
+    Role : any;
     ROleId : number;
+    RoleType : number;
+    
 
 }
 

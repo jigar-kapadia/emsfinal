@@ -27,6 +27,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ContactValidatorDirective } from './directives/contact-validator.directive';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { MatDatepickerModule,MatInputModule,MatNativeDateModule } from '@angular/material';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { MatDatepickerModule,MatInputModule,MatNativeDateModule } from '@angular
     ReactiveFormsModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    BsDatepickerModule.forRoot(),
+    UiSwitchModule
   ],
   providers: [LoginService,EmployeeService,AuthGuard],
   bootstrap: [AppComponent],

@@ -9,7 +9,7 @@
 	<h4 class="card-title mt-2">Sign up</h4>
 </header>
 <article class="card-body">
-<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateEmployee($event)">
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateEmployee(employeeForm)">
 	<div class="form-row">
 		<div class="col form-group">
 			<label for="FirstName">First name </label>   
@@ -113,9 +113,13 @@
 	<div class="form-row">
 			<div class="form-group col-sm-6">
 					<label>Date Of Birth</label>
-					<input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="DateOfBirth">
+					<!-- <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="DateOfBirth">
   					<mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-						<mat-datepicker #picker></mat-datepicker>
+						<mat-datepicker #picker></mat-datepicker> -->
+						<input type="text" class="form-control" 
+						placeholder="Choose a date" bsDatepicker 
+						formControlName="DateOfBirth" />
+
 				
 					<div class="alert alert-danger" *ngIf="employeeForm.get('DateOfBirth').touched && employeeForm.get('DateOfBirth').invalid">
 							<div *ngIf="employeeForm.get('DateOfBirth').hasError('required')">Required!</div>
@@ -123,19 +127,45 @@
 				</div> <!-- form-group end.// -->
 				<div class="form-group col-sm-6">
 						<label>Date Of Joining</label>
-						<input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="DateOfJoining">
+						<!-- <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="DateOfJoining">
   					<mat-datepicker-toggle matSuffix [for]="picker1" ></mat-datepicker-toggle>
-						<mat-datepicker #picker1></mat-datepicker>
+						<mat-datepicker #picker1></mat-datepicker> -->
+						<input type="text" class="form-control" 
+						placeholder="Choose a date" bsDatepicker 
+						formControlName="DateOfJoining" />
 						<div class="alert alert-danger" *ngIf="employeeForm.get('DateOfJoining').touched && employeeForm.get('DateOfJoining').invalid">
 								<div *ngIf="employeeForm.get('DateOfJoining').hasError('required')">Required!</div>
 							</div>
 					</div> <!-- form-group end.// -->
 	
 		</div> <!-- form-row.// -->
-	<div class="form-group">
-		<label>Create password</label>
-	    <input class="form-control" type="password">
-	</div> <!-- form-group end.// -->  
+
+
+	<div class="form-row">
+			<div class="form-group col-sm-6">
+					<label>Role</label>
+					<select class="form-control" formControlName="Role">
+						<option> Choose...</option>
+						<option *ngFor="let country of roles" value="{{country.Id}}">{{country.Name}}</option>
+					</select>
+					<div class="alert alert-danger" *ngIf="employeeForm.get('Role').touched && employeeForm.get('Role').invalid">
+					<div class="alert alert-danger" *ngIf="employeeForm.get('Role').touched && employeeForm.get('Role').invalid">
+						<div *ngIf="employeeForm.get('Role').hasError('required')">Required!</div>
+						</div>
+				</div> 
+			</div><!-- form-group end.// -->
+				<div class="form-group col-sm-6">
+						<label>IsActive</label>
+						<div>
+						<ui-switch formControlName="IsActive"></ui-switch>
+					</div>
+				</div> <!-- form-group end.// -->
+	
+	</div> <!-- form-row.// -->
+
+
+
+	
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block" [disabled]="employeeForm.invalid"> Register  </button>
     </div> <!-- form-group// -->      
@@ -147,3 +177,6 @@
 </div> <!-- col.//-->
 
 </div> <!-- row.//-->
+
+
+<div>{{employeeForm.value | json}}</div>
