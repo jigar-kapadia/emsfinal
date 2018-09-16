@@ -29,34 +29,39 @@ export class CreatenewComponent implements OnInit {
   IsStateSelected : boolean = false;
   employeeForm : FormGroup;
   Id : number;
+  buttonText : string;
   constructor(private router : Router,private employeeService : EmployeeService,private fb : FormBuilder, private _activatedRoute : ActivatedRoute) {
     
    }
 
   ngOnInit() {
     this.model = new Employee();
-    
     this.Id = this._activatedRoute.snapshot.params['id'];
     localStorage.setItem("Id",this._activatedRoute.snapshot.params['id']);
-    this.createform();
+
+    if(this.Id != 0)
+    {
+      this.buttonText = 'Update';
+    this.employeeService.GetEmployeeById(this.Id)
+    .subscribe(employee=>{
+      this.model = employee;
+      this.getStates(this.model.CountryId);
+      this.getCites(this.model.StateId);
+      this.createform();
+    });
+    }
+    else{
+      this.buttonText = 'Register';
+      this.model = new Employee();
+      this.createform();
+    }
+    
     this.getCountries();
     this.getDepartments();
     this.getRoles();
   }
 
   createform(){
-
-    if(this.Id != 0)
-    {
-    this.employeeService.GetEmployeeById(this.Id)
-    .subscribe(employee=>{
-      this.model = employee;
-    });
-    }
-    else{
-      this.model = new Employee();
-    }
-
     this.employeeForm = new FormGroup({
       FirstName : new FormControl(this.model.FirstName,Validators.required),
       LastName : new FormControl(this.model.LastName,Validators.required),
@@ -67,8 +72,8 @@ export class CreatenewComponent implements OnInit {
       State : new FormControl(this.model.StateId,Validators.required),
       City : new FormControl(this.model.CityId,Validators.required),
       Department : new FormControl(this.model.DepartmentId,Validators.required),
-      DateOfJoining : new FormControl(this.model.DateOfJoining,Validators.required),
-      DateOfBirth : new FormControl(this.model.DateOfBirth,Validators.required),
+      DateOfJoining : new FormControl(new Date(this.model.DateOfJoining),Validators.required),
+      DateOfBirth : new FormControl(new Date(this.model.DateOfBirth),Validators.required),
       Role : new FormControl(this.model.RoleType,Validators.required),
       IsActive : new FormControl(this.model.IsActive,Validators.required)
     });
@@ -103,88 +108,12 @@ export class CreatenewComponent implements OnInit {
       "RoleMaster": null,
       "State": null
     }
-    
-    // this.model.FirstName = values.FirstName;
-    // this.model.LastName = values.LastName;
-    // this.model.Email = values.Email;
-    // this.model.Phone = values.Contact;
-    // this.model.Gender = values.Gender;
-    // this.model.CountryId = values.Country;
-    // this.model.StateId = values.State;
-    // this.model.CityId = values.City;
-    // this.model.DepartmentId = values.Department;
-    // this.model.DateOfBirth = values.DateOfBirth;
-    // this.model.DateOfJoining = values.DateOfJoining;
-    // this.model.RoleType = values.Role;
-    // this.model.IsActive = values.IsActive;
-    // this.model.Country = null;
-    // this.model.City = null;
-    // this.model.State = null;
-    // this.model.Department = null;
-    // this.model.Role = null;
 
     this.employeeService.CreateEmployee(newObject)
     .subscribe(result=>{
       console.log(result);
     });
-    this.router.navigate(["/list"]);
-  }
-
-
-  UpdateEmployee() : void{
-    console.log( this.employeeForm.value);
-    var values = this.employeeForm.value
-
-    var dateB = new Date(values.DateOfBirth);
-    dateB.setMinutes(dateB.getMinutes() + dateB.getTimezoneOffset());
-    var dateJ = new Date(values.DateOfJoining);
     
-    dateJ.setMinutes(dateB.getMinutes() + dateJ.getTimezoneOffset());
-    var newObject = {
-      "Id" : values.Id,
-      "FirstName" : values.FirstName,
-      "LastName" : values.LastName,
-      "Email" : values.Email,
-      "Phone" : values.Contact,
-      "Gender" : values.Gender,
-      "CountryId" : values.Country,
-      "StateId" : values.State,
-      "CityId" : values.City,
-      "DepartmentId" : values.Department,
-      "DateOfBirth" : dateB,
-      "DateOfJoining" : dateJ,
-      "RoleType" : values.Role,
-      "IsActive" : values.IsActive,
-      "City": null,
-      "Country": null,
-      "Department": null,
-      "RoleMaster": null,
-      "State": null
-    }
-    
-    // this.model.FirstName = values.FirstName;
-    // this.model.LastName = values.LastName;
-    // this.model.Email = values.Email;
-    // this.model.Phone = values.Contact;
-    // this.model.Gender = values.Gender;
-    // this.model.CountryId = values.Country;
-    // this.model.StateId = values.State;
-    // this.model.CityId = values.City;
-    // this.model.DepartmentId = values.Department;
-    // this.model.DateOfBirth = values.DateOfBirth;
-    // this.model.DateOfJoining = values.DateOfJoining;
-    // this.model.RoleType = values.Role;
-    // this.model.IsActive = values.IsActive;
-    // this.model.Country = null;
-    // this.model.City = null;
-    // this.model.State = null;
-    // this.model.Department = null;
-    // this.model.Role = null;
-
-    this.employeeService.UpdateEmployee(newObject)
-    .subscribe(result=>{
-      console.log(result);
-    });
     this.router.navigate(["/list"]);
   }
 
@@ -216,13 +145,18 @@ export class CreatenewComponent implements OnInit {
   }
 
   getCites(stateId) : void{
-    this.IsCountrySelected = true;
-    this.IsStateSelected = true;
-    this.employeeService.GetCities(stateId)
-    .subscribe(List=>{
-      console.log(List)
-      this.cities = List
-    });
+
+    if(stateId != 0 || stateId != undefined)
+    {
+      this.IsCountrySelected = true;
+      this.IsStateSelected = true;
+      this.employeeService.GetCities(stateId)
+      .subscribe(List=>{
+        console.log(List)
+        this.cities = List
+      });
+    }
+    
   }
 
   getCountries() : void{
@@ -233,11 +167,15 @@ export class CreatenewComponent implements OnInit {
     });
   }
   getStates(countryId) : void{
-    this.IsCountrySelected = true;
-    this.employeeService.GetStates(countryId)
-    .subscribe(List=>{
-      console.log(List)
-      this.states = List
-    });
+    if(countryId != undefined)
+    {
+      this.IsCountrySelected = true;
+      this.employeeService.GetStates(countryId)
+      .subscribe(List=>{
+        console.log(List)
+        this.states = List
+      });
+    }
+    
   }
 }

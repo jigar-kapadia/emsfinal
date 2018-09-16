@@ -22,19 +22,11 @@ export class EmployeedetailsComponent implements OnInit {
   constructor(private empService : EmployeeService, private _activatedRoute: ActivatedRoute,public dialog: MatDialog) { }
 
   ngOnInit() {
-     //let id : string = sessionStorage.getItem("IdToGet");
      let id = this._activatedRoute.snapshot.params['id'];
     this.empService.GetEmployeeById(id)
     .subscribe(employee=>{
       this.employee = employee
     });
   }
-
-
-  // openDialog(): void {
-  //   let dialogRef = this.dialog.open(EmployeedetailsComponent, {
-  //     width: '250px'//,data: { name: this.name, animal: this.animal }
-  //   });
-  // }
 
 }

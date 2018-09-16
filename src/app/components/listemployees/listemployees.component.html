@@ -1,3 +1,7 @@
+<div>
+    <a class="btn btn-primary btn-sm" [routerLink]="" role="button" (click)="RedirecttoEdit(0)">Create Employee</a>
+</div>
+
 <data-table [title]="'Employees'" [items]="items" [itemCount]="itemCount" [indexColumn]="false" [pagination]="true"
  [expandableRows]="true" [limit]=10>
     <data-table-column [property]="'Id'" [header]="'Employee Id'">
@@ -12,7 +16,7 @@
   <data-table-column [header]="'Actions'">
     <ng-template #dataTableCell let-item="item">
       <input type="button" class="btn btn-primary btn-sm" value="Details" (click)="getEmployyesList($event,item.Id)">
-      <input type="button" class="btn btn-primary btn-sm" value="Edit">
+      <input type="button" class="btn btn-primary btn-sm" value="Edit" (click)="RedirecttoEdit(item.Id)">
       <input type="button" class="btn btn-primary btn-sm" value="Delete">
     </ng-template>
   </data-table-column>

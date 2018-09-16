@@ -17,7 +17,8 @@ export class ListemployeesComponent implements OnInit {
   items = [];
   itemCount = 0;
   employees : Employee[] = [];
-  constructor(private router : Router,private empService : EmployeeService,private vref : ViewContainerRef,private modalService : ModalDialogService) {
+  constructor(private router : Router,private empService : EmployeeService,private vref : ViewContainerRef,
+    private modalService : ModalDialogService,private activatedRoute : ActivatedRoute) {
     
    }
 
@@ -42,4 +43,9 @@ export class ListemployeesComponent implements OnInit {
     });
   }
 
+  RedirecttoEdit(id){
+    this.router.navigate(["/create/"+id]);
+  }
+
+  
 }

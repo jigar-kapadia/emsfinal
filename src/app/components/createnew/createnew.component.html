@@ -9,12 +9,12 @@
 	<h4 class="card-title mt-2">Sign up</h4>
 </header>
 <article class="card-body">
-<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateUpdateEmployee()">
+<form novalidate *ngIf="employeeForm" [formGroup]="employeeForm" (ngSubmit)="CreateUpdateEmployee()">
 	<!-- <div hidden formControlName="Id"></div> -->
 	<div class="form-row">
 		<div class="col form-group">
 			<label for="FirstName">First name </label>   
-      <input type="text" class="form-control" placeholder="" formControlName="FirstName">
+      		<input type="text" class="form-control" placeholder="" formControlName="FirstName">
       <div class="alert alert-danger" *ngIf="employeeForm.get('FirstName').touched && employeeForm.get('FirstName').invalid">
           <div *ngIf="employeeForm.get('FirstName').hasError('required')">Required!</div>
         </div>
@@ -168,7 +168,7 @@
 
 	
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="employeeForm.invalid"> Register  </button>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="employeeForm.invalid"> {{buttonText}}  </button>
     </div> <!-- form-group// -->      
     <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
 </form>
@@ -180,4 +180,4 @@
 </div> <!-- row.//-->
 
 
-<div>{{employeeForm.value | json}}</div>
+<div *ngIf="employeeForm">{{employeeForm.value | json}}</div>
