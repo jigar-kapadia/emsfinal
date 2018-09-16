@@ -9,7 +9,8 @@
 	<h4 class="card-title mt-2">Sign up</h4>
 </header>
 <article class="card-body">
-<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateEmployee(employeeForm)">
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="CreateUpdateEmployee()">
+	<!-- <div hidden formControlName="Id"></div> -->
 	<div class="form-row">
 		<div class="col form-group">
 			<label for="FirstName">First name </label>   

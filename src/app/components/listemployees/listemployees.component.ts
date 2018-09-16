@@ -30,10 +30,7 @@ export class ListemployeesComponent implements OnInit {
     this.items = this.employees;
     this.itemResource.count().then(co => this.itemCount = co)
     });
-    //console.log(this.employees)
-    // this.itemResource = new DataTableResource(this.employees);
-    // this.items = this.employees;
-    // this.itemResource.count().then(co => this.itemCount = co)
+   
   }
 
   getEmployyesList(event,id)

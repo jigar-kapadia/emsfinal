@@ -21,8 +21,7 @@ export class EmployeedialogComponent implements OnInit,IModalDialog {
   }
 
   dialogInit(ref : ComponentRef<IModalDialog>,options : Partial<IModalDialogOptions<any>>){
-// console.log(options);
-// console.log(ref);
+
 console.log(options.data);
 this.empService.GetEmployeeById(options.data)
     .subscribe(employee=>{

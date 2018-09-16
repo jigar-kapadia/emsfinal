@@ -98,11 +98,11 @@ export class EmployeeService
             .map((response: Response) => response.json());
     }
 
-    UpdateEmployee(id : number, emp :Employee ) : Observable<boolean>{
-        let headers = new Headers({'Authorization': 'Bearer ' + this.token});
+    UpdateEmployee(emp :any ) : Observable<boolean>{
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token ,
+        'Content-Type':  'application/json'});
         let options = new RequestOptions({ headers: headers });
-        //return this.http.post('http://localhost:51743/api/employee/update/'+id, options)
-        return this.http.post(this.url + 'employee/update/'+id, options)
+        return this.http.post(this.url + 'employee/update',emp, options)
             .map((response: Response) => response.json());
     }
 
@@ -110,11 +110,16 @@ export class EmployeeService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token ,
         'Content-Type':  'application/json'});
         let options = new RequestOptions({ headers: headers });
-        //return this.http.post('http://localhost:51743/api/employee/update/'+id, options)
         
-        return this.http.post('http://localhost:51743/api/create', emp, options)
+        return this.http.post(this.url + 'employee/create', emp, options)
             .map((response: Response) => response.json());
     }
 
+    DeleteEmployee(id : number) : Observable<any>{
+        let headers = new Headers({'Authorization': 'Bearer ' + this.token });
+        let options = new RequestOptions({ headers: headers });        
+        return this.http.post(this.url + 'employee/delete/'+id, null, options)
+            .map((response: Response) => response.json());
+    }
 
 }
